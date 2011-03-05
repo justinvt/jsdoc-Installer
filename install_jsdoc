@@ -1,5 +1,23 @@
 #!/usr/bin/env ruby
 
+#####################################################################
+#
+#  This script will create a jsdoc.conf file for you that contains 
+#  the settings you will reuse frequently.
+#  
+#  It will also create an executable called jsdoc which can be used to 
+#  conveniently generate documentation for a javascript file or directory
+# 
+#  Run as root with sudo, like:
+#
+#      sudo install_jsdoc
+#
+#  Once this script completes, you can do:
+#
+#      jsdoc my_javascript_stuff
+#
+#####################################################################
+
 require 'rubygems'
 require 'json'
 require 'fileutils'
