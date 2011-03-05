@@ -64,7 +64,7 @@ FileUtils.mkdir_p CONFIG_ROOT
 
 @jsrun  = File.join(JS_DOC_ROOT, "jsrun.jar")
 @runjs  = File.join(JS_DOC_ROOT, "app", "run.js")
-@binary = "#!/bin/bash\n\n\nJS_DOC_ROOT=#{JS_DOC_ROOT}\n\njava -jar $JS_DOC_ROOT/jsrun.jar $JS_DOC_ROOT/app/run.js -c=#{CONFIG_FILE}"
+@binary = "#!/bin/bash\n\n\nJS_DOC_ROOT=#{JS_DOC_ROOT}\n\njava -jar $JS_DOC_ROOT/jsrun.jar $JS_DOC_ROOT/app/run.js -c=#{CONFIG_FILE} $1"
 
 if File.writable?(File.dirname(CONFIG_FILE))
   f = File.open(CONFIG_FILE, "w+")
@@ -94,5 +94,5 @@ puts "Compiled JSDoc Documentation will be output to #{DOC_ROOT}\n\n"
 
 puts "The executable \"jsdoc\" now lives at #{BINARY}\n\n"
 
-puts "You may now restart the terminal and run the command 'jsdoc path/to/some_js_file_to_document.js' to generate jsdocumentation for your file.  Check the README for more information\n\n"
+puts "You may now restart the terminal and run the command 'jsdoc path/to/some_js_file_or_directory' to generate jsdocumentation for individual files or entire directories.  Check the README for more information\n\n"
 
