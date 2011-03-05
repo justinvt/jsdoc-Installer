@@ -81,5 +81,18 @@ f.close
 
 `chmod +x #{BINARY}`
 
-puts "You may now restart the terminal and run the command 'jsdoc \"my_file_to_document.js\"' to generate jsdocumentation for your file"
+puts "\n\n\n"
+
+puts ("=" * 50)
+puts "JSDOC Installation Complete"
+puts ("=" * 50)
+
+puts "\n\n"
+
+puts "The JSDoc Toolkit lives at #{JS_DOC_ROOT}"
+puts "Compiled JSDoc Documentation will be output to #{DOC_ROOT}\n\n"
+
+puts "The executable \"jsdoc\" now lives at #{BINARY}\n\n"
+
+puts "You may now restart the terminal and run the command 'jsdoc path/to/some_js_file_to_document.js' to generate jsdocumentation for your file.  Check the README for more information\n\n"
 

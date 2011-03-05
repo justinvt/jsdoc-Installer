@@ -5,11 +5,13 @@ Checkout the repository
 
     git clone https://github.com/SparkartGroupInc/jsdoc-Installer
     
-You may immediately move the directory "jsdoc-toolkit" from inside the repository to wherever you'd like, 
-or you may keep it exactly where it is.  Either way, take note of that directories absolute path - you'll need it in a sec, and you can't move it
-without rerunning this installation.  That's why you should move it NOW if you don't like where it ended up after you checked out the repo.
+The primary working component of the jsdoc install is in the root of the repo, under the directory "jsdoc-toolkit".  
+You may copy this directory to another location on your machine, or you may keep it exactly where it is.  
+If you do move it, remember where, as you'll need to provide the installer with that path during setup.
 
-Go back to the root of the repository and list the contents.
+**NOTE: If you install jsdoc with this script, and then move the jsdoc-toolkit later on, jsdoc will cease to function properly.  This is why you should move it NOW if you don't like running code directly from the repo**
+
+Go back to the root of our repository and list the contents.
 
     cd REPO_PATH
 
@@ -24,8 +26,7 @@ The only answer that actually matters for the installation to be successful is:
 
     "Where has the jsdoc toolkit been installed?"
 
-The answer to this question is **JSDOC_ROOT** path mentioned above (once again, in our example
- it would be **/Users/sparkartguy/dev/jsdoc/jsdoc-toolkit**).  If you haven't moved it, selecting the default will work just fine.
+The answer to this question is the path to jsdoc-toolkit which we asked you to remember above (only if you've moved it).  If you haven't moved it, selecting the default will work just fine.
 
 
 You should also note what your answer is to:
