@@ -19,7 +19,7 @@ DEFAULT_DOCUMENT_PRIVATE    = true
 
 
 unless File.writable?(File.dirname(BINARY))
-  raise "You need permission to write to the file #{BINARY} to complete this script.  Try using sudo"
+  puts "FATAL: You need permission to write to the file #{BINARY} to complete this script.  Try using sudo"
   exit 0
 end
 
