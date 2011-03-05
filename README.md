@@ -5,17 +5,17 @@ Checkout the repository
 
     git clone https://github.com/SparkartGroupInc/jsdoc-Installer
     
-Copy the repository to a convenient location on your machine.  You may immediately
-move the directory "jsdoc-toolkit" inside the repository to wherever you'd like, 
-but take note of where you've placed it.  You'll need this in a sec.
+You may immediately move the directory "jsdoc-toolkit" from inside the repository to wherever you'd like, 
+or you may keep it exactly where it is.  Either way, take note of that directories absolute path - you'll need it in a sec, and you can't move it
+without rerunning this installation.  That's why you should move it NOW if you don't like where it ended up after you checked out the repo.
 
-    mkdir -p /Users/sparkartguy/dev/jsdoc/
-    cp jsdoc-Installer/jsdoc-toolkit /Users/sparkartguy/dev/jsdoc/
+Go back to the root of the repository and list the contents.
 
-For this example, we'll I copied it to **/Users/sparkartguy/dev/jsdoc/jsdoc-toolkit**.  From now on
-I'll refer to that path as **JSDOC_ROOT**.
+    cd REPO_PATH
 
-Go back to the root jsdoc folder, where you'll see a script "install_jsdoc."  Run this as root.
+    ls
+
+You'll see a script "install_jsdoc."  Run this as root.
 
     sudo install_jsdoc
 
@@ -25,7 +25,10 @@ The only answer that actually matters for the installation to be successful is:
     "Where has the jsdoc toolkit been installed?"
 
 The answer to this question is **JSDOC_ROOT** path mentioned above (once again, in our example
- it would be **/Users/sparkartguy/dev/jsdoc/jsdoc-toolkit**).  You should also note what your answer is to:
+ it would be **/Users/sparkartguy/dev/jsdoc/jsdoc-toolkit**).  If you haven't moved it, selecting the default will work just fine.
+
+
+You should also note what your answer is to:
 
     "Where should jsdoc documentation be output?"
 
@@ -49,5 +52,27 @@ jsdoc my_script.js
 If the documentation has been compiled successfully, you will now find an "index.html" file in the directory you chose to output documentation to.
 In our case, that was **/Users/sparkartguy/dev/jsdoc/jsdoc-toolkit/out**.  Opening that file in a browser will show you the finalized jsdoc documentation
 in html for your project.
+
+Making changes later on
+--------------------------------
+
+The installation script does two things:
+
+* Creates the default config file that jsdoc will use in the future.
+* Writes the executable jsdoc using the values you provided during the installation
+
+If you want to change the configuration resulting from this process, you may either rerun in install script, or
+remember where you told the installer to place the config file, and edit that manually.  On OS X, it should default to
+
+    ~/.jsdoc/jsdoc.conf
+
+You may also wish to make changes to the default flags used by the **jsdoc** executable.  To view the contents of this script and/or make changes,
+try:
+
+    sudo vi `which jsdoc`
+
+If you completely ruin everything, I suggest rerunning the **install_jsdoc** script, which should always produce a usable base config.
+
+Enjoy!!
 
 Enjoy!

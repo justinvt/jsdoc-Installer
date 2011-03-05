@@ -12,7 +12,7 @@ CONFIG_ROOT = File.join(ENV["HOME"],".jsdoc")
 CONFIG_FILE = File.join(CONFIG_ROOT,"jsdoc.conf")
 
 DEFAULT_NAME       = ENV["NAME"] || ENV["USER"]
-DEFAULT_JSDOC_ROOT = File.expand_path(".")
+DEFAULT_JSDOC_ROOT = File.join( File.expand_path("."), "jsdoc-toolkit")
 DEFAULT_TEMPLATE    = "templates/jsdoc"
 DEFAULT_DOCUMENT_ALL        = true
 DEFAULT_DOCUMENT_PRIVATE    = true
