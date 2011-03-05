@@ -1,12 +1,19 @@
 Installation Instructions for jsdoc toolkit
 ==================================================
 
-Copy this directory to a convenient location on your machine.  You may immediately
-move the directory "jsdoc-toolkit" to wherever you'd like it to live, but take note of where
-you've placed it.  You'll need this in a sec.
+Checkout the repository
 
-For this example, we'll say I moved it to **/Users/sparkartguy/dev/jsdoc/jsdoc-toolkit**, and from now on
-I'll refer to that path as JSDOC_ROOT.
+    git clone https://github.com/SparkartGroupInc/jsdoc-Installer
+    
+Copy the repository to a convenient location on your machine.  You may immediately
+move the directory "jsdoc-toolkit" inside the repository to wherever you'd like, 
+but take note of where you've placed it.  You'll need this in a sec.
+
+    mkdir -p /Users/sparkartguy/dev/jsdoc/
+    cp jsdoc-Installer/jsdoc-toolkit /Users/sparkartguy/dev/jsdoc/
+
+For this example, we'll I copied it to **/Users/sparkartguy/dev/jsdoc/jsdoc-toolkit**.  From now on
+I'll refer to that path as **JSDOC_ROOT**.
 
 Go back to the root jsdoc folder, where you'll see a script "install_jsdoc."  Run this as root.
 
@@ -17,7 +24,7 @@ The only answer that actually matters for the installation to be successful is:
 
     "Where has the jsdoc toolkit been installed?"
 
-The answer to this question is JSDOC_ROOT path mentioned above (once again, in our example
+The answer to this question is **JSDOC_ROOT** path mentioned above (once again, in our example
  it would be **/Users/sparkartguy/dev/jsdoc/jsdoc-toolkit**).  You should also note what your answer is to:
 
     "Where should jsdoc documentation be output?"
