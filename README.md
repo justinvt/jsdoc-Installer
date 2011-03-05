@@ -34,8 +34,11 @@ After the install script has completed, restart the terminal.  You now have acce
 compatible commentary in it, and try running the following
 
 ```bash
-jsdoc my_script.js #replace my_script.js with the actual name of your javascript file or a directory containing javascript
+jsdoc my_script.js
 ```
+
+**NOTE: replace my_script.js with the actual name of your javascript file or a directory containing javascript**
+
 If the documentation has been compiled successfully, you will now find an "index.html" file in the directory you chose to output documentation to.
 In our case, that was **/Users/sparkartguy/dev/jsdoc/jsdoc-toolkit/out**.  Opening that file in a browser will show you the finalized jsdoc documentation
 in html for your project.
