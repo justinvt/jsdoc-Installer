@@ -44,9 +44,9 @@ Using the jsdoc script
 After the install script has completed, restart the terminal.  You now have access to the "jsdoc" command.  Find a piece of javascript with jsdoc
 compatible commentary in it, and try running the following
 
-```bash
-jsdoc my_script.js
-```
+
+    jsdoc my_script.js
+
 
 **NOTE: replace my_script.js with the actual name of your javascript file or a directory containing javascript**
 
@@ -75,5 +75,3 @@ try:
 If you completely ruin everything, I suggest rerunning the **install_jsdoc** script, which should always produce a usable base config.
 
 Enjoy!!
-
-Enjoy!
