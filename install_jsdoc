@@ -64,7 +64,7 @@ FileUtils.mkdir_p CONFIG_ROOT
 
 @jsrun  = File.join(JS_DOC_ROOT, "jsrun.jar")
 @runjs  = File.join(JS_DOC_ROOT, "app", "run.js")
-@binary = "#!/bin/bash\n\n\nJS_DOC_ROOT=#{JS_DOC_ROOT}\n\njava -jar $JS_DOC_ROOT/jsrun.jar $JS_DOC_ROOT/app/run.js -c=#{CONFIG_FILE} $1"
+@binary = "#!/bin/bash\n\n\nJS_DOC_ROOT=#{JS_DOC_ROOT}\n\njava -jar $JS_DOC_ROOT/jsrun.jar $JS_DOC_ROOT/app/run.js -c=#{CONFIG_FILE} \"$1\""
 
 if File.writable?(File.dirname(CONFIG_FILE))
   f = File.open(CONFIG_FILE, "w+")
