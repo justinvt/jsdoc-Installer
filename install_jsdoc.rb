@@ -1,0 +1,85 @@
+#!/usr/bin/env ruby
+
+require 'rubygems'
+require 'json'
+require 'fileutils'
+
+YEAR = Time.now.year.to_s
+WARNING = " - Don't change this if you don't know what it is.  Just hit enter"
+BINARY      = "/usr/bin/jsdoc"
+
+CONFIG_ROOT = File.join(ENV["HOME"],".jsdoc")
+CONFIG_FILE = File.join(CONFIG_ROOT,"jsdoc.conf")
+
+DEFAULT_NAME       = ENV["NAME"] || ENV["USER"]
+DEFAULT_JSDOC_ROOT = File.expand_path(".")
+DEFAULT_TEMPLATE    = "templates/jsdoc"
+DEFAULT_DOCUMENT_ALL        = true
+DEFAULT_DOCUMENT_PRIVATE    = true
+
+
+unless File.writable?(File.dirname(BINARY))
+  raise "You need permission to write to the file #{BINARY} to complete this script.  Try using sudo"
+  exit 0
+end
+
+def command_prompt(question, default, warning=WARNING)
+  print "#{question} (default: \"#{default}\"#{warning}): "
+  option = gets.strip
+  (option.nil? || option.length == 0 ) ? default : option
+end
+
+puts "\n\nJSDOC Installer\n" + ("=" * 60) + "\n\n"
+
+NAME             = command_prompt("What is your Full Name", DEFAULT_NAME)
+JS_DOC_ROOT      = File.expand_path(command_prompt("Where has the jsdoc toolkit been installed?", DEFAULT_JSDOC_ROOT))
+
+DEFAULT_DOC_ROOT = File.join(JS_DOC_ROOT,"out")
+
+DOC_ROOT         = command_prompt("Where should jsdoc documentation be output?", DEFAULT_DOC_ROOT)
+TEMPLATE         = command_prompt("What template would you like to use - relative to the jsdoc toolkit root directory #{JS_DOC_ROOT}?", DEFAULT_TEMPLATE)
+DOCUMENT_ALL     = command_prompt("Would you like to document  functions without commentary?",DEFAULT_DOCUMENT_ALL)
+DOCUMENT_PRIVATE = command_prompt("Would you like to document private functions?", DEFAULT_DOCUMENT_PRIVATE)
+
+FileUtils.mkdir_p DOC_ROOT
+FileUtils.mkdir_p CONFIG_ROOT
+
+@default_config = 	{
+	
+	# document all functions, even uncommented ones
+	:a => DOCUMENT_ALL,
+	
+	# including those marked @private
+	:p => DOCUMENT_PRIVATE,
+	
+	# some extra variables I want to include
+	:D => {:generatedBy => NAME, :copyright => YEAR},
+	
+	# use this directory as the output directory
+	:d => DOC_ROOT,
+	
+	# use this template
+	:t => File.join(JS_DOC_ROOT, TEMPLATE)
+}
+
+@jsrun  = File.join(JS_DOC_ROOT, "jsrun.jar")
+@runjs  = File.join(JS_DOC_ROOT, "app", "run.js")
+@binary = "#!/bin/bash\n\n\nJS_DOC_ROOT=#{JS_DOC_ROOT}\n\njava -jar $JS_DOC_ROOT/jsrun.jar $JS_DOC_ROOT/app/run.js -c=#{CONFIG_FILE}"
+
+if File.writable?(File.dirname(CONFIG_FILE))
+  f = File.open(CONFIG_FILE, "w+")
+  f.puts @default_config.to_json.gsub(/\"[\w]+\":/){|s| s.gsub('"','')}
+  f.close
+else
+  raise "You dont have permission to write to #{CONFIG_FILE}.  Perhaps try again as sudo"
+  exit 0
+end
+
+f = File.open(BINARY, "w+")
+f.puts @binary
+f.close
+
+`chmod +x #{BINARY}`
+
+puts "You may now restart the terminal and run the command 'jsdoc \"my_file_to_document.js\"' to generate jsdocumentation for your file"
+
